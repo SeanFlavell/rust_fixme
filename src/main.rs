@@ -22,13 +22,22 @@ impl Display for City {
     }
 }
 
-#[derive(Debug)]
+
 struct Color {
     red: u8,
     green: u8,
     blue: u8,
 }
 
+/// This is similar to the Display for City code above but with unneeded code taken out like the
+/// if statement since that was for setting lat to N or S and lon to E or W. 
+impl Display for Color {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+
+        write!(f, "red: {},green: {},blue: {} ",
+            self.red, self.green, self.blue)
+    }
+}
 fn main() {
     for city in [
         City { name: "Glassboro", lat: 39.702892, lon: -75.111839 },
@@ -44,6 +53,6 @@ fn main() {
         Color { red: 0, green: 0, blue: 0 },
     ].iter() {
         // Hint : Fix the code so you can print it using {}
-        println!("{:?}", *color);
+        println!("{}", *color);
     }
 }
